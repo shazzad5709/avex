@@ -366,3 +366,50 @@
 - Content: distinguished executed/normalized pilot from pending human scientific evaluation; documented condition/rubric/attempt review, scoring, annotated demonstration and audit; proposed additional scenarios, stronger second model, preplanned repetitions, evaluator reliability and quantitative analysis as separately authorized future work.
 - Validation: local documentation-link checks and `git diff --check`; no code tests needed. No source, raw logs, condition files, prompts, configurations, scores or figures changed; no model requests, new runs, trace selection or final audit performed.
 - Remaining decisions: human condition interpretation, scoring definitions/applicability, attempt inclusion and scientific scores; future model/scenario/repetition/resource and analysis choices.
+
+
+### 2026-10-16T23:37:12+06:00 — New-member project orientation
+
+- Task: explain AVEX, documented progress, remaining work and onboarding needs using the supplied 35-page PDF and repository documentation.
+- Files created: no repository files; temporary PDF page rendering under /private/tmp. Modified: docs/CODEX_WORKLOG.md (this entry only).
+- Checks: repository inventory and git status; PDF text extraction and page 31 visual review; README, progress snapshot, run summaries, scenario configuration and scoring worksheet inspection; archive-path existence checks. No code tests or experiments run for this read-only orientation.
+- Findings: documentation records six pilot cells/eight attempts and pending human scoring; this checkout lacks raw/normalized logs, condition workspaces, original snapshots and result CSVs. PDF positions pilot as pipeline validation and proposes future larger-model evaluation; current repository scope remains locked to the pilot.
+- Unresolved/researcher decisions: obtain original execution archive from team; confirm latest study plan and pilot-scoring role; approve future model/configuration and evaluation protocol before expansion. No scientific scores or conclusions changed.
+
+
+### 2026-10-16T23:53:25+06:00 — Clarify assigned dataset range
+
+- Task: explain the reported assignment of RepoPairBench entries 51–75.
+- Checks: opened the user-supplied GitHub JSONL page; verified its displayed 100-line structure and record fields. No tests applicable.
+- Created: none. Modified: this worklog only.
+- Findings: ordinary one-based inclusive interpretation gives 25 records; under the described plan these require 25 E1/E2 and 25 E3 snapshot variants. Record position differs from the hexadecimal scenario ID.
+- Unresolved: team numbering convention and fixed dataset revision should be confirmed before extraction; scenario evidence selection and E3 validity require researcher validation. No snapshots built, dataset downloaded or experiments started.
+
+
+### 2026-10-17T00:17:07+06:00 — Acquire assigned RepoPairBench records 51–75
+
+- Task: prepare source material for 25 assigned records; user clarified E3 removal means omitting the entire target file. Initial prompt treatment remains a pending clarification.
+- Created: scripts/prepare_snapshot_batch.py; tests/test_prepare_snapshot_batch.py; docs/batch_051_075_preparation.md; private/batch_051_075/ containing pinned upstream inputs, selected records, revisions, inventories, source archives, 50 extracted source trees, extraction/integrity reports, pending evidence templates and target-file omission rules. Modified: this worklog. Existing pilot configuration and outputs unchanged.
+- Commands/checks: GitHub API commit resolution; curl pinned dataset/source retrieval; gzip integrity checks for all 50 archives; preparation CLI; target-function whitespace comparisons (50/50 matches); SHA-256 inventories of 70,598 regular files; python3 -m unittest discover -s tests (41 passed); git diff --check.
+- Findings: 25 records across 22 repositories, dataset revision f858c49a40310e4cd5f5db6129462e15e04a8de4. Fixing commits and first parents follow upstream reconstruction semantics. Four initial downloads timed out (batch exit 28); two paired retries exited 0; failed partial archives retained. 592 symlink entries omitted and recorded; original compressed archives intact. Downloaded code never executed.
+- Boundaries: before/after source pairs are researcher-only, not approved E1/E2/E3 workspaces. No model runs, scientific scoring, ground-truth changes or target-file removals performed.
+- Remaining: confirm target function remains in E3 prompt or clarify desired alternate treatment; construct conditions and leakage exclusions under the agreed rule. E1 sufficiency, E2 retrievability and E3 unavailability require researcher validation; omission of the target file alone does not establish these properties.
+
+
+### 2026-10-17T00:27:52+06:00 — Verify existing prompt design
+
+- Task: clarify whether prompts already exist for the assigned snapshot work.
+- Checked: prompts/common_prompt.txt, scripts/run_pilot.py construct_prompt, scripts/opencode_pilot.py references, and config/evidence_manifest.json initial evidence lists.
+- Findings: frozen common task template exists; runner appends scenario/condition-specific source packets. Existing pilot E2/E3 packets both include the target source file, but those packets cover only iRedAdmin and are not prepared for the new 25 records. No prompt redesign needed to retain target code in initial evidence.
+- Created: none. Modified: this worklog only. No tests required for read-only inspection.
+- Remaining: batch condition construction and per-scenario evidence packets; target-file omission is the user-specified construction rule, with scientific sufficiency/unavailability requiring researcher validation.
+
+
+### 2026-10-17T14:32:46+06:00 — Complete records 51–75 snapshot conditions
+
+- Task: finish user-requested 25 E1/E2 and 25 E3 snapshots using entire-target-file omission for E3.
+- Created: scripts/build_snapshot_conditions.py; tests/test_build_snapshot_conditions.py; pilot/conditions/batch_051_075/ (50 condition folders); private/batch_051_075/{batch_source_leakage_scan.json,reviewed_marker_exceptions.json,condition_build_plan.json,condition_build_report.json,condition_verification.json,condition_inventory.csv}. Modified: docs/batch_051_075_preparation.md and this worklog.
+- Checks: full source leakage scan using unchanged existing rules; reviewed generic ML/corpus marker contexts; all 47 unit tests pass; builder hash verification; independent rehash of original sources and all condition files; all 25 pairs differ solely by the target file; original source inventories match acquisition hashes; no symlinks; git diff --check clean.
+- Results: 25 E1_E2 and 25 E3 folders built from pre-fix trees only. Applied 37 common whole-file leakage exclusions equally in both variants. Retained 223 reviewed ordinary upstream ML/reference-label or natural-language marker occurrences, recorded with paths/lines/reasons. No unresolved scanner markers remain after exclusions and exceptions, established through source scans and exact-copy verification. This is not an exhaustive semantic leakage claim.
+- Boundaries: patched code and researcher manifests remain private; common prompt unchanged; no agent runs or new per-scenario evidence packets generated. Initial target code is intended to remain supplied following existing prompt pattern. Prior source extraction link omissions remain documented.
+- Researcher validation: target-file omission does not prove E3 unresolvability or E1/E2 sufficiency/retrievability. Review common exclusions, marker exceptions and scenario-specific evidence packets before scientific use. Execution isolation must be applied per workspace. Snapshot engineering deliverable is complete.
